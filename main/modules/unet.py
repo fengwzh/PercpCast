@@ -174,7 +174,6 @@ class Unet(nn.Module):
         image_size = image_size * 2
         mid_dim = dims[-1]
         self.mid_block1 = block_klass(mid_dim, mid_dim, time_emb_dim = time_dim)
-        self.model = AFNONet(img_size=(image_size, image_size), patch_size=(8, 8), in_chans=mid_dim, out_chans=mid_dim)
         self.mid_attn = FullAttention(mid_dim, heads = attn_heads[-1], dim_head = attn_dim_head[-1])
         self.mid_attn1 = Tattn_klass(mid_dim)
         self.mid_block2 = block_klass(mid_dim, mid_dim, time_emb_dim = time_dim)
